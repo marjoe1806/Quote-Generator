@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Quote Generator</title>
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .col-4,
+  .col-8 {
+    padding: 1rem;
+  }
+
+  .col-4 {
+    flex: 0 0 100%;
+  }
+
+  .col-8 {
+    flex: 0 0 100%;
+  }
+
+  .container {
+    text-align: center;
+    background: #e0e0e0;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  }
+
+  h1,
+  h2 {
+    color: #333;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #bebebe, -4px -4px 8px #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    box-shadow: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+  }
+
+  #quote {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 2rem;
+    color: red;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="row">
+    <div class="col-4">
+      <h1>Quote Generator</h1>
+      <button onclick="generateQuote()">Generate Quote</button>
+    </div>
+    <div class="col-8">
+      <div class="container">
+        <p id="quote">"Success is fueled by hard work."</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function generateQuote() {
+      const subjects = [
+        "Success", "Courage", "Determination", "Passion", "Growth",
+        "Resilience", "Kindness", "Creativity", "Focus", "Confidence",
+        "Ambition", "Empathy", "Wisdom", "Gratitude", "Optimism",
+        "Patience", "Discipline", "Innovation", "Teamwork", "Leadership",
+        "Integrity", "Humility", "Adaptability", "Perseverance", "Vision",
+        "Hope", "Charisma", "Collaboration", "Curiosity", "Excellence",
+        "Inspiration", "Motivation", "Strength", "Compassion", "Honesty",
+        "Determination", "Bravery", "Fortitude", "Tenacity", "Faith",
+        "Love", "Happiness", "Joy", "Peace", "Harmony",
+        "Balance", "Ambition", "Drive", "Energy", "Focus",
+        "Dedication", "Commitment", "Loyalty", "Trust", "Respect",
+        "Understanding", "Knowledge", "Learning", "Growth", "Development",
+        "Achievement", "Success", "Victory", "Triumph", "Accomplishment",
+        "Fulfillment", "Satisfaction", "Pride", "Confidence", "Self-esteem"
+      ];
+
+      const verbs = [
+        "is fueled by", "is achieved through", "is inspired by",
+        "is driven by", "is nurtured by", "is strengthened by",
+        "is cultivated through", "is guided by", "is rooted in",
+        "is powered by", "is sustained by", "is enriched by",
+        "is enhanced by", "is supported by", "is amplified by",
+        "is motivated by", "is encouraged by", "is propelled by",
+        "is sparked by", "is ignited by", "is awakened by"
+      ];
+
+      const objects = [
+        "hard work", "dedication", "perseverance", "imagination",
+        "hope", "vision", "self-belief", "patience", "integrity", "effort",
+        "dreams", "goals", "ambition", "resilience", "focus", "discipline",
+        "creativity", "kindness", "teamwork", "leadership", "innovation",
+        "courage", "determination", "optimism", "gratitude", "self-awareness"
+      ];
+
+      const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      const generateRandomQuote = () => {
+        const firstSentence = `${getRandomElement(subjects)} ${getRandomElement(verbs)} ${getRandomElement(objects)}.`;
+        const secondSentence = `${getRandomElement(subjects)} ${getRandomElement(verbs)} ${getRandomElement(objects)}.`;
+        const randomQuote = `${firstSentence} ${secondSentence}`;
+        const quoteElement = document.getElementById('quote');
+        quoteElement.textContent = `"${randomQuote}"`;
+      };
+
+      // Generate a quote immediately upon opening
+      generateRandomQuote();
+    }
+  </script>
+</body>
+
+</html>
